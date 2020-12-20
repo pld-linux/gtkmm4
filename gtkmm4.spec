@@ -1,46 +1,47 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static libraries
+%bcond_without	static_libs	# static library
 
-%define		atkmm_ver	2.24.2
-%define		glibmm_ver	2.54.0
-%define		gtk3_ver	3.24.0
-%define		pangomm_ver	2.38.2
+%define		atkmm_ver	2.29.1
+%define		cairomm_ver	1.15.4
+%define		glibmm_ver	2.68.0
+%define		gtk4_ver	4.0.0
+%define		pangomm_ver	2.48.0
 Summary:	A C++ interface for the GTK+ (a GUI library for X)
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+
-Name:		gtkmm3
-Version:	3.24.3
+Name:		gtkmm4
+Version:	4.0.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
-Source0:	https://download.gnome.org/sources/gtkmm/3.24/gtkmm-%{version}.tar.xz
-# Source0-md5:	9a9a00bcd634e3eca0b101809f2eae02
+Source0:	https://download.gnome.org/sources/gtkmm/4.0/gtkmm-%{version}.tar.xz
+# Source0-md5:	f2e283a0c7d12171532b894cb4af7f67
 URL:		https://www.gtkmm.org/
-BuildRequires:	atkmm-devel >= %{atkmm_ver}
+BuildRequires:	atkmm2.36-devel >= %{atkmm_ver}
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	cairomm-devel >= 1.12.0
+BuildRequires:	cairomm1.16-devel >= %{cairomm_ver}
 BuildRequires:	doxygen >= 1:1.8.9
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.0
-BuildRequires:	glibmm-devel >= %{glibmm_ver}
-BuildRequires:	gtk+3-devel >= %{gtk3_ver}
+BuildRequires:	glibmm2.68-devel >= %{glibmm_ver}
+BuildRequires:	gtk4-devel >= %{gtk4_ver}
 BuildRequires:	libepoxy-devel >= 1.2
-BuildRequires:	libsigc++-devel
-BuildRequires:	libstdc++-devel >= 6:4.7
+BuildRequires:	libsigc++3-devel >= 3.0
+BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	libtool >= 2:2.0
-BuildRequires:	mm-common >= 0.9.10
-BuildRequires:	pangomm-devel >= %{pangomm_ver}
+BuildRequires:	mm-common >= 0.9.12
+BuildRequires:	pangomm2.48-devel >= %{pangomm_ver}
 BuildRequires:	perl-base >= 1:5.6.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	atkmm >= %{atkmm_ver}
-Requires:	cairomm >= 1.12.0
+Requires:	atkmm2.36 >= %{atkmm_ver}
+Requires:	cairomm1.16 >= %{cairomm_ver}
 Requires:	gdk-pixbuf2 >= 2.36.0
-Requires:	glibmm >= %{glibmm_ver}
-Requires:	gtk+3 >= %{gtk3_ver}
-Requires:	pangomm >= %{pangomm_ver}
+Requires:	glibmm2.68 >= %{glibmm_ver}
+Requires:	gtk4 >= %{gtk4_ver}
+Requires:	pangomm2.48 >= %{pangomm_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -61,13 +62,13 @@ Summary:	gtkmm and gdkmm header files
 Summary(pl.UTF-8):	Pliki nagłówkowe gtkmm i gdkmm
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	atkmm-devel >= %{atkmm_ver}
-Requires:	cairomm-devel >= 1.12.0
+Requires:	atkmm2.36-devel >= %{atkmm_ver}
+Requires:	cairomm1.16-devel >= %{cairomm_ver}
 Requires:	gdk-pixbuf2-devel >= 2.36.0
-Requires:	glibmm-devel >= %{glibmm_ver}
-Requires:	gtk+3-devel >= %{gtk3_ver}
-Requires:	libstdc++-devel >= 6:4.6
-Requires:	pangomm-devel >= %{pangomm_ver}
+Requires:	glibmm2.68-devel >= %{glibmm_ver}
+Requires:	gtk4-devel >= %{gtk4_ver}
+Requires:	libstdc++-devel >= 6:7
+Requires:	pangomm2.48-devel >= %{pangomm_ver}
 
 %description devel
 Header files for gtkmm library.
@@ -139,30 +140,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/libgdkmm-3.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgdkmm-3.0.so.1
-%attr(755,root,root) %{_libdir}/libgtkmm-3.0.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgtkmm-3.0.so.1
+%attr(755,root,root) %{_libdir}/libgtkmm-4.0.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgtkmm-4.0.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgdkmm-3.0.so
-%attr(755,root,root) %{_libdir}/libgtkmm-3.0.so
-%{_libdir}/gdkmm-3.0
-%{_libdir}/gtkmm-3.0
-%{_includedir}/gdkmm-3.0
-%{_includedir}/gtkmm-3.0
-%{_pkgconfigdir}/gdkmm-3.0.pc
-%{_pkgconfigdir}/gtkmm-3.0.pc
+%attr(755,root,root) %{_libdir}/libgtkmm-4.0.so
+%{_libdir}/gtkmm-4.0
+%{_includedir}/gtkmm-4.0
+%{_pkgconfigdir}/gtkmm-4.0.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libgdkmm-3.0.a
-%{_libdir}/libgtkmm-3.0.a
+%{_libdir}/libgtkmm-4.0.a
 %endif
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_docdir}/gtkmm-3.0
-%{_datadir}/devhelp/books/gtkmm-3.0
+%{_docdir}/gtkmm-4.0
+%{_datadir}/devhelp/books/gtkmm-4.0
