@@ -10,12 +10,12 @@
 Summary:	A C++ interface for the GTK+ (a GUI library for X)
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+
 Name:		gtkmm4
-Version:	4.0.1
+Version:	4.0.2
 Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/gtkmm/4.0/gtkmm-%{version}.tar.xz
-# Source0-md5:	69774cc079b34dd006b7bc49d81fe324
+# Source0-md5:	f165226c4ee0a79941f9294beab46fa5
 URL:		https://www.gtkmm.org/
 BuildRequires:	atkmm2.36-devel >= %{atkmm_ver}
 BuildRequires:	autoconf >= 2.59
@@ -33,6 +33,7 @@ BuildRequires:	mm-common >= 0.9.12
 BuildRequires:	pangomm2.48-devel >= %{pangomm_ver}
 BuildRequires:	perl-base >= 1:5.6.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
