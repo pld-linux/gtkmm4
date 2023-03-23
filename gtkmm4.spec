@@ -2,22 +2,20 @@
 # Conditional build:
 %bcond_without	static_libs	# static library
 
-%define		atkmm_ver	2.29.1
 %define		cairomm_ver	1.15.4
 %define		glibmm_ver	2.68.0
-%define		gtk4_ver	4.7.2
+%define		gtk4_ver	4.10.0
 %define		pangomm_ver	2.50.0
 Summary:	A C++ interface for the GTK+ (a GUI library for X)
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+
 Name:		gtkmm4
-Version:	4.8.0
+Version:	4.10.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
-Source0:	https://download.gnome.org/sources/gtkmm/4.8/gtkmm-%{version}.tar.xz
-# Source0-md5:	9b577203ce37a5cd70e35bf194be5cf4
+Source0:	https://download.gnome.org/sources/gtkmm/4.10/gtkmm-%{version}.tar.xz
+# Source0-md5:	b3c2bd5dff7eb5215f5599c705100e18
 URL:		https://www.gtkmm.org/
-BuildRequires:	atkmm2.36-devel >= %{atkmm_ver}
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cairomm1.16-devel >= %{cairomm_ver}
@@ -37,7 +35,6 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	atkmm2.36 >= %{atkmm_ver}
 Requires:	cairomm1.16 >= %{cairomm_ver}
 Requires:	gdk-pixbuf2 >= 2.36.0
 Requires:	glibmm2.68 >= %{glibmm_ver}
@@ -63,7 +60,6 @@ Summary:	gtkmm and gdkmm header files
 Summary(pl.UTF-8):	Pliki nagłówkowe gtkmm i gdkmm
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	atkmm2.36-devel >= %{atkmm_ver}
 Requires:	cairomm1.16-devel >= %{cairomm_ver}
 Requires:	gdk-pixbuf2-devel >= 2.36.0
 Requires:	glibmm2.68-devel >= %{glibmm_ver}
@@ -140,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %attr(755,root,root) %{_libdir}/libgtkmm-4.0.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgtkmm-4.0.so.0
 
