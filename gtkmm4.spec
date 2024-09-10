@@ -4,17 +4,17 @@
 
 %define		cairomm_ver	1.15.4
 %define		glibmm_ver	2.68.0
-%define		gtk4_ver	4.14.0
+%define		gtk4_ver	4.15.5
 %define		pangomm_ver	2.50.0
 Summary:	A C++ interface for the GTK+ (a GUI library for X)
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+
 Name:		gtkmm4
-Version:	4.14.0
+Version:	4.16.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
-Source0:	https://download.gnome.org/sources/gtkmm/4.14/gtkmm-%{version}.tar.xz
-# Source0-md5:	2e25e9c3f64793ff8b51bdd24196d78f
+Source0:	https://download.gnome.org/sources/gtkmm/4.16/gtkmm-%{version}.tar.xz
+# Source0-md5:	d2161c39f2be1ac0c1285cd8e0c63b6c
 URL:		https://www.gtkmm.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
