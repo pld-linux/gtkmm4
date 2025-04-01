@@ -3,26 +3,26 @@
 %bcond_without	static_libs	# static library
 
 %define		cairomm_ver	1.15.4
-%define		glibmm_ver	2.68.0
-%define		gtk4_ver	4.15.5
+%define		glibmm_ver	2.75.0
+%define		gtk_ver		4.17.5
 %define		pangomm_ver	2.50.0
 Summary:	A C++ interface for the GTK+ (a GUI library for X)
 Summary(pl.UTF-8):	Wrapper C++ dla GTK+
 Name:		gtkmm4
-Version:	4.16.0
+Version:	4.18.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Libraries
-Source0:	https://download.gnome.org/sources/gtkmm/4.16/gtkmm-%{version}.tar.xz
-# Source0-md5:	d2161c39f2be1ac0c1285cd8e0c63b6c
-URL:		https://www.gtkmm.org/
+Source0:	https://download.gnome.org/sources/gtkmm/4.18/gtkmm-%{version}.tar.xz
+# Source0-md5:	d689b73e53fdf8cdc8e45dda4d867ca9
+URL:		https://gtkmm.gnome.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cairomm1.16-devel >= %{cairomm_ver}
 BuildRequires:	doxygen >= 1:1.8.9
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.0
 BuildRequires:	glibmm2.68-devel >= %{glibmm_ver}
-BuildRequires:	gtk4-devel >= %{gtk4_ver}
+BuildRequires:	gtk4-devel >= %{gtk_ver}
 BuildRequires:	libepoxy-devel >= 1.2
 BuildRequires:	libsigc++3-devel >= 3.0
 BuildRequires:	libstdc++-devel >= 6:7
@@ -38,7 +38,7 @@ BuildRequires:	xz
 Requires:	cairomm1.16 >= %{cairomm_ver}
 Requires:	gdk-pixbuf2 >= 2.36.0
 Requires:	glibmm2.68 >= %{glibmm_ver}
-Requires:	gtk4 >= %{gtk4_ver}
+Requires:	gtk4 >= %{gtk_ver}
 Requires:	pangomm2.48 >= %{pangomm_ver}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -63,7 +63,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	cairomm1.16-devel >= %{cairomm_ver}
 Requires:	gdk-pixbuf2-devel >= 2.36.0
 Requires:	glibmm2.68-devel >= %{glibmm_ver}
-Requires:	gtk4-devel >= %{gtk4_ver}
+Requires:	gtk4-devel >= %{gtk_ver}
 Requires:	libstdc++-devel >= 6:7
 Requires:	pangomm2.48-devel >= %{pangomm_ver}
 
@@ -100,11 +100,6 @@ Szczegółowa dokumentacja gtkmm i gdkmm.
 
 %prep
 %setup -q -n gtkmm-%{version}
-
-# missing in release tarball, not needed for Linux
-mkdir win32_installer
-touch win32_installer/filelist.am \
-	win32_installer/gtkmm-installer.nsi.in
 
 %build
 mm-common-prepare --copy --force
