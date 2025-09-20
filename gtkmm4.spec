@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	apidocs		# API documentation
 %bcond_without	static_libs	# static library
 
 %define		cairomm_ver	1.15.4
@@ -19,16 +20,16 @@ URL:		https://gtkmm.gnome.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cairomm1.16-devel >= %{cairomm_ver}
-BuildRequires:	doxygen >= 1:1.8.9
+%{?with_apidocs:BuildRequires:	doxygen >= 1:1.8.9}
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.0
 BuildRequires:	glibmm2.68-devel >= %{glibmm_ver}
-BuildRequires:	graphviz
+%{?with_apidocs:BuildRequires:	graphviz}
 BuildRequires:	gtk4-devel >= %{gtk_ver}
 BuildRequires:	libepoxy-devel >= 1.2
 BuildRequires:	libsigc++3-devel >= 3.0
 BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	libtool >= 2:2.0
-BuildRequires:	libxslt-progs
+%{?with_apidocsBuildRequires:	libxslt-progs}
 BuildRequires:	mm-common >= 0.9.12
 BuildRequires:	pangomm2.48-devel >= %{pangomm_ver}
 BuildRequires:	perl-base >= 1:5.6.0
@@ -113,7 +114,8 @@ mm-common-prepare --copy --force
 %configure \
 	--enable-maintainer-mode \
 	--disable-silent-rules \
-	%{?with_static_libs:--enable-static}
+	%{?with_static_libs:--enable-static} \
+	%{__enable_disable apidocs documentation}
 
 %{__make}
 
@@ -150,7 +152,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgtkmm-4.0.a
 %endif
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_docdir}/gtkmm-4.0
 %{_datadir}/devhelp/books/gtkmm-4.0
+%endif
