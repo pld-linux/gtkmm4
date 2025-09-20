@@ -22,11 +22,13 @@ BuildRequires:	cairomm1.16-devel >= %{cairomm_ver}
 BuildRequires:	doxygen >= 1:1.8.9
 BuildRequires:	gdk-pixbuf2-devel >= 2.36.0
 BuildRequires:	glibmm2.68-devel >= %{glibmm_ver}
+BuildRequires:	graphviz
 BuildRequires:	gtk4-devel >= %{gtk_ver}
 BuildRequires:	libepoxy-devel >= 1.2
 BuildRequires:	libsigc++3-devel >= 3.0
 BuildRequires:	libstdc++-devel >= 6:7
 BuildRequires:	libtool >= 2:2.0
+BuildRequires:	libxslt-progs
 BuildRequires:	mm-common >= 0.9.12
 BuildRequires:	pangomm2.48-devel >= %{pangomm_ver}
 BuildRequires:	perl-base >= 1:5.6.0
